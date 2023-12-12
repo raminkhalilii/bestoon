@@ -4,7 +4,20 @@ from django.contrib.auth.models import User
 
 
 class Expenses(models.Model):
-    Name = models.CharField(max_length=200)
-    amount = models.IntegerField
-    user = models.ForeignKey(User)
-    date = models.DateTimeField(auto_now=True)
+    name = models.TextField(null=True)
+    amount = models.IntegerField(null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Income(models.Model):
+    name = models.TextField(null=True)
+    amount = models.IntegerField(null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.name
