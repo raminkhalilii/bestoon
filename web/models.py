@@ -21,3 +21,8 @@ class Income(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Tokens(models.Model):
+    token = models.TextField(max_length=48, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
